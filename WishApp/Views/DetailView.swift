@@ -41,13 +41,14 @@ struct DetailView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .cornerRadius(10)
-                                
+                                    .shadow(radius: 5)      
                                 
                             }else {
                                 Image(uiImage: UIImage(data: itemPicture!)!)
                                     .resizable()
                                     .scaledToFit()
                                     .cornerRadius(10)
+                                    .shadow(radius: 5)
                             }
                             
                             HStack{
