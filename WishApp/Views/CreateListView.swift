@@ -24,8 +24,6 @@ struct CreateListView: View {
     @Environment(\.managedObjectContext) var moc    
     @Environment(\.presentationMode) var presentationMode
     
-
-    
     var body: some View {
         ZStack{
             Color("Background")
@@ -34,12 +32,14 @@ struct CreateListView: View {
             ScrollView(.vertical, showsIndicators: false){
                 //Stack for all the fields
                 VStack{
+                    // Item Name Field
                     TextField("Item Name - Required", text: $itemName)
                         .padding(10) //Padding inside the border
                         .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.blue, lineWidth: 2))
                         .padding(.vertical,10) //Padding that shifts it down
                     
                     HStack{
+                        //Currency Field
                         Picker("Select Currency", selection: $itemCurr){
                             ForEach(currency, id: \.self){
                                 Text($0)
