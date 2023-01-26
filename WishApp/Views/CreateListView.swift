@@ -16,12 +16,12 @@ struct CreateListView: View {
     @State var itemCurr = "USD"
     @State var itemDesc = ""
     
-    let currency = ["USD", "EUR", "JPY"]
-        
+    let currency = ["USD", "EUR", "JPY", "GBP"]
+    
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
     
-    @Environment(\.managedObjectContext) var moc    
+    @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -56,7 +56,9 @@ struct CreateListView: View {
                     }
                     .padding(10)
                     
+                    
                     Group{
+                        
                         TextField("Reason for Item - Optional", text: $itemDesc, axis: .vertical)
                         
                         TextField("Link to Website - Optional", text: $itemLink)

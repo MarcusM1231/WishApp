@@ -10,4 +10,6 @@ import Foundation
 class EnviromentVars: ObservableObject{
     @Published var createItemSheet: Bool = false
     @Published var editItem: Bool = false
+    
+    @Published var wishlists: [Wishlist] = []
 }

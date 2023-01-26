@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyListView: View {
+struct ItemsView: View {
     @State var createNew: Bool = false
     @State var presentAlert: Bool = false
     @FetchRequest(sortDescriptors: []) var items: FetchedResults<Item>
@@ -52,31 +52,16 @@ struct MyListView: View {
                         
                         Spacer()
                         
-                        Menu{
-                            Button("New Wishlist"){
-                                presentAlert = true
-                            }
-                            
-                            
-                            
-                            Button("New Item"){
-                                createNew = true
-                            }
-                            
-                        }label:{
+                        Button(action: {
+                            createNew = true
+                        }, label: {
                             Image(systemName: "plus")
-                        }
+                        })
                         .sheet(isPresented: $createNew){
                             CreateListView()
                         }
-                        
-                        .sheet(isPresented: $presentAlert) {
-                            CreateWishGroup()
-                                .presentationDetents([.medium])
-                        }
-                        
-                        
                     }
+                    
                     List{
                         ForEach(items) {item in
                             VStack{
@@ -94,9 +79,7 @@ struct MyListView: View {
                     .scrollContentBackground(.hidden)
                     .padding(10)
                     
-//                    List(data.wishlists) { wishlist in
-//                        WishlistCard(name: wishlist.name)
-//                    }
+                    
                     
                     Spacer()
                 }
@@ -109,9 +92,9 @@ struct MyListView: View {
 
 
 
-struct MyListView_Previews: PreviewProvider {
+struct ItemsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyListView()
+        ItemsView()
             .environmentObject(EnviromentVars())
     }
 }
